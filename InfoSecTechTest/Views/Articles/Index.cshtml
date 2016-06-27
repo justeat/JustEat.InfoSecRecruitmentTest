@@ -1,0 +1,14 @@
+﻿@model IEnumerable<InfoSecTechTest.Models.Article>
+
+@{
+    ViewBag.Title = "Articles";
+}
+
+<h2>Index</h2>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@Html.ActionLink(item.Title, "Details", new { id = item.ID })</li>
+    }
+
+</ul>
