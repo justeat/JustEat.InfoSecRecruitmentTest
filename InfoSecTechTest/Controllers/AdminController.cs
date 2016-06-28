@@ -5,11 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using InfoSecTechTest.Models;
 using System.Web.Security;
+using InfoSecTechTest.DAL;
 
 namespace InfoSecTechTest.Controllers
 {
     public class AdminController : Controller
     {
+        private SiteContext db = new SiteContext();
+
         [Authorize]
         public ActionResult Index()
         {
@@ -21,7 +24,6 @@ namespace InfoSecTechTest.Controllers
             return View("Login");
         }
 
-
         [HttpPost]
         public ActionResult Login(LoginViewModel login)
         {
@@ -31,8 +33,11 @@ namespace InfoSecTechTest.Controllers
                 return View("Login");
             }
 
-            if (login.Username == "user" && login.Password == "password")
+            User u = db.Users.Where(ua => ua.Username == login.Username && ua.Password == login.Password).FirstOrDefault();
+            if (u!= null)
+            {
                 FormsAuthentication.RedirectFromLoginPage(login.Username, true);
+            }
 
             ViewBag.Error = "Credentials invalid. Please try again.";
             return View("Login");

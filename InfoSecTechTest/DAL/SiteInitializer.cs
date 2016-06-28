@@ -4,7 +4,7 @@ using InfoSecTechTest.Models;
 
 namespace InfoSecTechTest.DAL
 {
-    public class SiteInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<SiteContext>
+    public class SiteInitializer : System.Data.Entity.DropCreateDatabaseAlways<SiteContext>
     {
         protected override void Seed(SiteContext context)
         {
@@ -16,6 +16,15 @@ namespace InfoSecTechTest.DAL
             };
 
             articles.ForEach(s => context.Articles.Add(s));
+
+            var users = new List<User>
+            {
+                new User{Username="admin",Password="jsj3l4"},
+                new User{Username="superadmin",Password="rt5rf"}
+            };
+
+            users.ForEach(s => context.Users.Add(s));
+
             context.SaveChanges();
         }
     }
