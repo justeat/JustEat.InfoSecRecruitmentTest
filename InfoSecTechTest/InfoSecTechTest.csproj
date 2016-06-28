@@ -135,7 +135,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
@@ -179,6 +178,7 @@
     <Content Include="Views\Articles\Search.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

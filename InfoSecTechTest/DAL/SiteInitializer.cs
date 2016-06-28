@@ -4,7 +4,7 @@ using InfoSecTechTest.Models;
 
 namespace InfoSecTechTest.DAL
 {
-    public class SiteInitializer : System.Data.Entity.DropCreateDatabaseAlways<SiteContext>
+    public class SiteInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<SiteContext>
     {
         protected override void Seed(SiteContext context)
         {
