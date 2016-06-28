@@ -1,0 +1,28 @@
+﻿@model InfoSecTechTest.Models.SearchViewModel
+
+@{
+    ViewBag.Title = "Search Results";
+}
+
+<h2>Search</h2>
+<div>
+    @using (Html.BeginForm())
+    {
+        <p>
+            Title: @Html.TextBox("searchtext")
+            <input type="submit" value="Search" />
+        </p>
+    }
+    <p>Search term: @Html.Raw(Model.SearchTerm)</p>
+</div>
+<div>
+    <h3>Results</h3>
+
+    <ul>
+        @foreach (var item in Model.Results)
+        {
+            <li>@Html.ActionLink(item.Title, "Details", new { id = item.ID })</li>
+        }
+
+    </ul>
+</div>

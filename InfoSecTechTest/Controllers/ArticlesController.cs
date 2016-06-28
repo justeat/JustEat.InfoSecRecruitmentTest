@@ -37,6 +37,19 @@ namespace InfoSecTechTest.Controllers
             return View(article);
         }
 
-       
+        [ValidateInput(false)]
+        public ActionResult Search(String searchtext)
+        {
+            SearchViewModel m = new SearchViewModel();
+            if (searchtext == null)
+            {
+                m.Results = db.Articles.ToList();
+            }
+            m.Results = db.Articles.Where(i => i.Body.Contains(searchtext)).ToList();
+            m.SearchTerm = searchtext;
+            return View(m);
+        }
+
+
     }
 }
